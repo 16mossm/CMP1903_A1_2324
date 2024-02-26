@@ -20,7 +20,7 @@ namespace CMP1903_A1_2324
 
             Testing test = new Testing();
             test.testGame();
-
+            Console.Read();
         }
     }
 }

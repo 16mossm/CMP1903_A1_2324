@@ -9,7 +9,8 @@ namespace CMP1903_A1_2324
     internal class Game
     {
         Die[] rolls; // the dice that the game rolls
-        
+        int DiceRolled = -1;    // the index of the last dice rolled (for the continuous rolling)
+
         public Game(int ammountOfRolls = 3, int dieSize = 6)  
         {
             this.rolls = new Die[ammountOfRolls];
@@ -19,6 +20,19 @@ namespace CMP1903_A1_2324
             }
         }
 
+        public int RollNext()   //rolls the next available dice;
+        {
+            try
+            {
+                this.rollDice(++DiceRolled);    //rolls the next dice
+                return this.rolls[DiceRolled].getValue();   //returnes the value
+            }
+            catch (IndexOutOfRangeException)
+            {
+                //this happens if all of the dice have already been rolled;
+                throw new Exception("all dice already rolled");
+            }
+        }
 
         public int GetSum() //returns the sum of all dice
         {
@@ -32,7 +46,8 @@ namespace CMP1903_A1_2324
 
         public void rollDice(int die = -1)   //rolles specified die. if -1 it rolls all of them
         {
-            if(die == -1)
+            this.DiceRolled = this.rolls.Length;    //disables the continuous rolls function.
+            if (die == -1)
             {
                 for(int i = 0; i < this.rolls.Length; i++)  //if -1 roll all of the dice
                 {
@@ -48,7 +63,6 @@ namespace CMP1903_A1_2324
             }
 
             this.rolls[die].roll();     //roll the specified die
-
         }
 
 
