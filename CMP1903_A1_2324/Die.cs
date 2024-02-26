@@ -14,10 +14,19 @@ namespace CMP1903_A1_2324
          */
 
         //Property
-
+        private int value;
 
         //Method
+        public int roll()
+        {
+            Random rd = new Random();
+            this.value = rd.Next(1, 7); // lowwer bound is inclusive; upper bound is exclusive 
+            return this.value;
+        }
 
+        public int getValue() {
+            return this.value;
+        }
 
     }
 }
