@@ -14,6 +14,13 @@ namespace CMP1903_A1_2324
              * Create a Game object and call its methods.
              * Create a Testing object to verify the output and operation of the other classes.
              */
+            Game gam = new Game();
+            gam.rollDice();
+            Console.WriteLine("sum: " + gam.GetSum().ToString());
+
+            Testing test = new Testing();
+            test.testGame();
+            Console.Read();
         }
     }
 }
